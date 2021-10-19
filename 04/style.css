@@ -1,7 +1,7 @@
 /* not really that important, just a reset to make things easier. */
 html, html * {
     box-sizing: border-box;
-    
+    font-size: 62.5px;
 }
 
 
@@ -12,9 +12,9 @@ main {
     grid-template-areas: "nav nav nav"
                          "side art aside"
                          "side art aside";
-    /* grid-template-columns: ; */
-    /* grid-template-rows:  */
-    /* grid-gap: ; */
+    grid-template-columns: auto; 
+    grid-template-rows: auto; 
+    max-width: 1240px;
 }
 
 
@@ -22,43 +22,52 @@ main>* {
     border: orange solid 1px;   /*sorry for the horrible color*/
     border-radius: 10px;
     text-align: center;         /*keep the text centered horizontally*/
-    
 }
 
+nav {
+    background-color: rgba(30,200,30,0.3);
+    grid-area: 1/1/1/4;
+    min-height: 5vh;
+    min-width: 1200px;
+    font-size: 20px;
+}
 
 aside {
     background-color: rgba(143, 81, 188, 0.3);
-    grid-area:
+    grid-area: 2/3/auto/3;
+    width: 300px; 
+    justify-content: flex-end;
+    font-size: 20px;
 }
 
 
 section.sidebar {
     background-color: rgba(150, 112, 36, 0.3);
-    grid-area:
+    grid-area: 2/1/2/2;
     display: flex; 
-    flex-direction:
-    justify-content:            /*these last two are optional*/
-    align-items:
+    flex-direction: column;
+    justify-content: center;      /*these last two are optional*/
+    align-items: center; 
+    width: 300px; 
+    margin: 0px;
 }
 
 section.sidebar img {
     max-width: 80%; /* you'll see why this is useful soon, I promise!*/
     border: 1px solid black;
     border-radius: 5px;
-}
-
-nav {
-    background-color: rgba(30,200,30,0.3);
-
+    margin-bottom: 20px;
 }
 
 article {
     background-color: rgba(30,30,30,0.4);
-    grid-area:
-    display: grid ;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    gap:                   /*the gap is optional*/    
+    grid-area: 2/2/2/2; 
+    display: flex;
+    width: 630px;
+    min-height:50vh;
+    grid-template-columns: repeat(5, 1fr) ;
+    grid-template-rows: repeat(5, 1fr) ;
+    font-size: 20px;
 }
 
 /* these next two are just simple styling to make the div boxes visible */
@@ -66,39 +75,52 @@ article > div {
     border: blue 1px solid;
     border-radius: 10px;
     background-color: rgba(50,50,200,0.3);
+    min-width: 250px;
+    height: 300px; 
+    display:block;
+    flex-direction:row;
 }
 
 article div section {
-    line-height:2;
+    line-height: 1rem;
+    font-size: 18px;
     background-color: rgba(10,10,200,0.5);
-    
 }
 
 /* use the grid-row and grid-column values to place the boxes precisely onto the grid */
 #box1 {
-    grid-row:
-    grid-column:
+    z-index: 10;
+    position: absolute; 
 }
 
 #box2 {
-    grid-row:
-    grid-column:
+    z-index: 20;
+    position: relative;
+    margin-top: 150px;
+    margin-left: 120px;
 }
 
 #box3 {
-    grid-row:
-    grid-column:
+    z-index: 30;
+    position: relative;
+    margin-top: 300px;
+    margin-left: -120px; 
 }
 
 #box4 {
-    grid-row:
-    grid-column:
+    z-index: 40;
+    position: relative;
+    margin-top: 450px;
+    margin-left: -120px;
 }
 
 #box5 {
-    grid-row:
-    grid-column:
-    background-color: rgba(200,10,10,0.3)
+    background-color: rgba(200,10,10,0.3);
+    min-width: 125px;
+    height: 175px; 
+    z-index: 10;
+    position: relative;
+    margin-left: -125px;
 }
 
 
@@ -114,7 +136,7 @@ article div section {
         grid-template-rows: 80px 1fr 120px 80px;
     }
     section.sidebar {
-        flex-direction: ;       /* when the screen shrinks, change direction.*/
+        flex-direction: column;    /* when the screen shrinks, change direction.*/
     }
     
     section.sidebar img {       /* I'vefilled these in for you; feel free to fool with them if you like. */
